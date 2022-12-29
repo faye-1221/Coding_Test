@@ -1,10 +1,11 @@
 N = int(input())
 alpha = list()
 for i in range(0, N):
-    alpha.append(input())
+    word = str(input())
+    alpha.append((word, len(word)))
 
 alpha = list(set(alpha))
-alpha.sort(key=len)
+alpha.sort(key=lambda x: (x[1], x[0]))
 
-for i in range(0, len(alpha)):
-    print(alpha[i])
+for i in alpha:
+    print(i[1])
