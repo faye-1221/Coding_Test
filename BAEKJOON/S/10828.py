@@ -30,3 +30,5 @@ for _ in range(N):
             print(-1)
         else:
             print(l[-1])
+
+    print(l)
