@@ -1,17 +1,35 @@
-import sys
-N, M = map(int, sys.stdin.readline().split())
-site = []
-password = []
-for i in range(N):
-    s, p = sys.stdin.readline().split()
-    site.append(s)
-    password.append(p)
+N, M, V = map(int, input().split()) #4, 5, 1
 
-out = []
+graph = {}
 for i in range(M):
-    search = sys.stdin.readline().rstrip()
-    idx = site.index(search)
-    out.append(password[idx])
+	a, b = map(int, input().split())
+	graph[a] = graph.get(a, []) + [b]
+	graph[b] = graph.get(b, []) + [a]
 
-for i in out:
-    print(i)
+for key in graph:
+    graph[key]  = sorted(graph[key])
+
+
+def BFS(start_v):
+    discovered = [start_v]
+    queue = [start_v]
+    while queue:
+        v = queue.pop(0)
+        if v in graph.keys():
+            for w in graph[v]:
+                if w not in discovered:
+                    discovered.append(w)
+                    queue.append(w)
+    return discovered
+
+
+def DFS(v, discovered=[]):
+    discovered.append(v)
+    if v in graph.keys():
+        for w in graph[v]:
+            if w not in discovered:
+                discovered = DFS(w, discovered)
+    return discovered
+
+print(' '.join(map(str, DFS(V))))
+print(' '.join(map(str, BFS(V))))
