@@ -1,4 +1,3 @@
-# 14002번 
 x = int(input())
 arr = list(map(int, input().split()))
 
