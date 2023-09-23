@@ -12,11 +12,12 @@ class Solution(object):
 
         # 우선순위 큐 최솟값 기준으로 정점까지 최단 경로 삽입
         while Q:
-            time, node = heapq.heappop(Q)
-            if node not in dist:
-                dist[node] = time
-                for v, w in graph[node]:
-                    alt = time + w
+            time, node = heapq.heappop(Q) # Q(힙)에서 가장 작은 원소 삭제 후에 리턴
+            if node not in dist: # dist에 node가 없다면
+                dist[node] = time # dist에 node 추가
+                for v, w in graph[node]: # 그래프 인접리스트 for문
+                    # time에 인접리스트의 소요시간 추가 후 Q에 다시 저장
+                    alt = time + w 
                     heapq.heappush(Q, (alt, v))
         
         # 모든 노드의 최단 경로 존재 여부 판별
