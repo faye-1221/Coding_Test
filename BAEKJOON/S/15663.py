@@ -11,7 +11,6 @@ def back():
     
     remember_num = 0
     for i in range(n):
-        print(remember_num != nums[i])
         if not visited[i] and remember_num != nums[i]:
             visited[i] = True # 방문
             remember_num = nums[i] # 해당 숫자 중복 불가능
