@@ -45,3 +45,15 @@ class Solution(object):
             profit = max(profit, price- min_price)
         
         return profit
+
+# 다시 풀기 23.12.08
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        price_min = 10000 # 10^4
+        result = 0
+
+        for i in prices:
+            price_min = min(price_min, i)
+            result = max(result, i - price_min)
+            
+        return result
