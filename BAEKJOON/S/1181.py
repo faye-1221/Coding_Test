@@ -8,4 +8,4 @@ alpha = list(set(alpha))
 alpha.sort(key=lambda x: (x[1], x[0]))
 
 for i in alpha:
-    print(i[1])
+    print(i[0])

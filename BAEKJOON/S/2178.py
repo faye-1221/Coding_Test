@@ -23,7 +23,6 @@ def bfs(maps, x, y, visited):
                 distance[(nx, ny)] = distance[(x, y)] + 1
                 visited[nx][ny] = True
 
-        print(distance)
     return -1
 
 print(bfs(maps, 0, 0, visited))
